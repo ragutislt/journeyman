@@ -1,0 +1,41 @@
+[
+  {
+	"id": 1,
+	"title": "Mini Hollywood",
+	"distance": 40,
+	"time": "4 hours",
+	"coordinates": {
+	  "lat": 37.019981,
+	  "lng": -2.432407
+	},
+	"url": "https://en.wikipedia.org/wiki/Mini_Hollywood",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Town_square_in_Mini_Hollywood.jpg/1920px-Town_square_in_Mini_Hollywood.jpg",
+	"description": "In Tabernas, the only desert in Europe, are the authentic westerns scenarios,\nturned into the most original Mediterranean Theme Park with Live Shows, a huge\nzoological Reserve with more than 800 animals of 200 different species, Pool\nAreas and a large range of Restaurants, Educational Activities and Events and\nCelebrations management\nIn our Theme Park located in Almería (Spain) you can enjoy guided tours and\nworkshops for children. Make your entry or our annual subscription."
+  },
+  {
+	"id": 2,
+	"title": "Valencia",
+	"distance": 178,
+	"time": "4 days",
+	"coordinates": {
+	  "lat": 39.469634,
+	  "lng": -0.376406
+	},
+	"url": "https://en.wikipedia.org/wiki/Valencia",
+	"image": "https://d3hne3c382ip58.cloudfront.net/files/uploads/bookmundi/resized/cmsfeatured/valencia-tours-holidays-1519988330-785X440.jpg",
+	"description": "There are few cities like Valencia, able to harmoniously combine the remnants of its farthest past, dating to the year 138 BC, with the most innovative and avant-garde buildings from the new millennium.\nValencia is trade and culture, cinema, theatre, museums, magic, business. It is the centre of international and avant-garde design, and one of the most active cities in Europe regarding fairs and conferences.\nThanks to its location, Valencia has historically been Spain’s Mediterranean port and has that special charm of cities that are also seaports. And the fine sand and clean water, the vastness of the sea and the closeness of the coastal mountains make the Valencian coast uniquely attractive."
+  },
+  {
+	"id": 3,
+	"title": "León",
+	"distance": 178,
+	"time": "1 day",
+	"coordinates": {
+	  "lat": 42.596832,
+	  "lng": -5.569842
+	},
+	"url": "https://en.wikipedia.org/wiki/Le%C3%B3n,_Spain",
+	"image": "https://www.telegraph.co.uk/content/dam/Travel/leadAssets/23/92/Plaza-de-San-Marco_2392990a.jpg?imwidth=1400",
+	"description": "The city of León is in the northwest of Spain. It is on the Way of St. James and has a vast cultural, historical and architectural heritage. León was founded in the 1st century BC by the Roman legion Legio VI Victrix, which served under Caesar Augustus during the Cantabrian Wars (29-19 BC), the final stage of the Roman conquest of Hispania. In the year 74 AD, the Legio VII Gemina —recruited from the Hispanics by Galba in 69 AD— settled in a permanent military camp that was the origin of the city. Its modern name is derived from the city's Latin name Legio. The Kingdom of León (established in 910 CE) was an ancient territory with a great Dynasty of Kings that would become kings of Spain after the union with the Kingdom of Aragon. The counties of Portugal and Castile were born as divisions of the ancient kingdom of León that remained independent until the union with Castile again."
+  }
+]
