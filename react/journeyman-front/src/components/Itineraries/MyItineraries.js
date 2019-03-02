@@ -9,8 +9,18 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
 
+import { Itinerary } from '../../objects';
+import Loading from '../Loading';
+
+import { connect } from "react-redux";
+
 class MyItineraries extends React.Component {
     render() {
+        const { myItineraries } = this.props;
+        if (!myItineraries) {
+            return <Loading />;
+        }
+
         return (
             <Grid container>
                 <Typography variant="h6">
@@ -25,21 +35,19 @@ class MyItineraries extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {/* {objects.map(row => { */}
-                        {/* // return ( */}
-                        {/*  */}
-                        <TableRow key={1}
-                            // onClick={(e) => this.changeInfo(e, row)}
-                            style={{ cursor: "pointer" }}>
-                            <TableCell component="th" scope="row">
-                                <Link to="/itinerary">Spain trip</Link>
-                            </TableCell>
-                            <TableCell align={"right"}>1000</TableCell>
-                            <TableCell align={"right"}>7 days</TableCell>
-                        </TableRow>
-                        {/* </Link> */}
-                        {/* ) */}
-                        {/* })} */}
+                        {myItineraries.map(row => {
+                            return (
+                                <TableRow key={1}
+                                    // onClick={(e) => this.changeInfo(e, row)}
+                                    style={{ cursor: "pointer" }}>
+                                    <TableCell component="th" scope="row">
+                                        <Link to={"/itinerary/" + row.id}>{row.title}</Link>
+                                    </TableCell>
+                                    <TableCell align={"right"}>{row.totalDistance}</TableCell>
+                                    <TableCell align={"right"}>{row.duration}</TableCell>
+                                </TableRow>
+                            )
+                        })}
                     </TableBody>
                 </Table>
             </Grid>
@@ -47,4 +55,10 @@ class MyItineraries extends React.Component {
     }
 }
 
-export default MyItineraries;
+const mapStateToProps = state => {
+    return {
+        myItineraries: state.itineraries.myItineraries ? state.itineraries.myItineraries.map(i => Object.assign(new Itinerary(), i)) : []
+    };
+};
+
+export default connect(mapStateToProps)(MyItineraries);

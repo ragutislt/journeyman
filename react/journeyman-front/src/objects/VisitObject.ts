@@ -1,28 +1,17 @@
 class VisitObject {
-	// id: number;
-	// title: string;
-	// distance: number;
-	// time: string;
-	// coordinates: {
-	// 	lat: number,
-	// 	lng: number
-	// };
-	// url: string;
-	// image: string;
-	// description: string;
-
 	constructor(
-		id: number,
-		title: string,
-		distance: number,
-		time: string,
-		coordinates: {
+		public id: number,
+		public title: string,
+		public distance: number,
+		public time: string,
+		public coordinates: {
 			lat: number,
 			lng: number
 		},
-		url: string,
-		image: string,
-		description: string) { }
+		public url: string,
+		public image: string,
+		public description: string
+	) { }
 };
 
 export default VisitObject;

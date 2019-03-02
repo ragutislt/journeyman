@@ -11,12 +11,14 @@ import './App.scss';
 import { Provider } from 'react-redux'
 import store from './reduxConfig';
 
-import { initItineraries } from './reducers';
+import { initItinerariesSuccess } from './reducers';
+
+import { fetch } from "./data/DataProvider";
 
 class App extends Component {
 
 	componentDidMount() {
-		store.dispatch((initItineraries()));
+		fetch("objects.json", (data) => { store.dispatch((initItinerariesSuccess(data))); })
 	}
 
 	render() {
@@ -25,7 +27,7 @@ class App extends Component {
 				<HashRouter>
 					<div className="App">
 						<Route path="/" exact component={Home} />
-						<Route path={"/itinerary"} component={Itinerary} />
+						<Route path={"/itinerary/:id"} component={Itinerary} />
 						<Route path={"/object"} component={VisitObject} />
 					</div>
 				</HashRouter>
