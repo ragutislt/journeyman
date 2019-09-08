@@ -1,10 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,9 +9,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-import MapContainer from "./MapContainer";
-import {fetch} from "../data/DataProvider";
-import Layout from "../layout/Layout";
+import MapContainer from "../MapContainer";
+import { fetch } from "../../data/DataProvider";
+import Layout from "../../layout/Layout";
+import ObjectList from '../../components/Itineraries/ObjectList'
+import { Paper } from '@material-ui/core';
+import ItineraryTitle from './ItineraryTitle';
+import ItineraryStats from './ItineraryStats';
 
 class Itinerary extends React.Component {
 
@@ -50,48 +50,29 @@ class Itinerary extends React.Component {
 	};
 
 	render() {
-		const {objects, activeObject} = this.state;
+		const { objects, activeObject } = this.state;
 
-		if (!objects) return <Layout pageName="Itinerary"/>;
+		if (!objects) return <Layout pageName="Itinerary" />;
 
 		return (
 			<Layout pageName="Itinerary">
+				<ItineraryTitle/>
 				<div>
-					<Grid container spacing={40} style={{minHeight: "90vh"}}>
+					<Grid container spacing={40} style={{ minHeight: "90vh" }}>
 						<Grid item={true} xs>
-							<Table>
-								<TableHead>
-									<TableRow>
-										<TableCell>Object</TableCell>
-										<TableCell align={"right"}>Distance from previous</TableCell>
-										<TableCell>Time needed</TableCell>
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{objects.map(row => {
-										return (
-											<TableRow key={row.id} selected={activeObject && row.id === activeObject.id}
-											          onClick={(e) => this.changeInfo(e, row)}
-											          style={{cursor: "pointer"}}>
-												<TableCell component="th" scope="row">
-													{row.title}
-												</TableCell>
-												<TableCell align={"right"}>{row.distance}</TableCell>
-												<TableCell align={"right"}>{row.time}</TableCell>
-											</TableRow>
-										)
-									})}
-								</TableBody>
-							</Table>
+							<Paper>
+								<ObjectList objects={objects} />
+							</Paper>
 						</Grid>
 						<Grid item={true} xs>
-							{activeObject && activeObject.id ?
+							<ItineraryStats/>
+							{/* {activeObject && activeObject.id ?
 								(
 									<Card>
 										<CardActionArea>
-											<CardMedia style={{height: 150}}
-											           image={activeObject.image}
-											           title={activeObject.title}
+											<CardMedia style={{ height: 150 }}
+												image={activeObject.image}
+												title={activeObject.title}
 											/>
 											<CardContent>
 												<Typography gutterBottom variant="h5" component="h2" align={"left"}>
@@ -102,7 +83,6 @@ class Itinerary extends React.Component {
 												</Typography>
 											</CardContent>
 										</CardActionArea>
-										{/*<Divider variant={"middle"}/>*/}
 										<CardActions>
 											<Button size="small" color="primary" onClick={this.removeObject}>
 												Remove
@@ -116,7 +96,7 @@ class Itinerary extends React.Component {
 									</Card>
 								) : <Typography component="p">
 									Select an object from the table to see it's description
-								</Typography>}
+								</Typography>} */}
 						</Grid>
 					</Grid>
 					<Grid spacing={40} container>
@@ -137,7 +117,7 @@ class Itinerary extends React.Component {
 								minHeight: "70vh",
 								position: "relative",
 							}}>
-								<MapContainer points={objects}/>
+								<MapContainer points={objects} />
 							</div>
 						</Grid>
 					</Grid>

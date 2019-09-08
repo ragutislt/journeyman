@@ -3,7 +3,7 @@ import {
 	Route,
 	HashRouter
 } from "react-router-dom";
-import Itinerary from './pages/Itinerary';
+import Itinerary from './pages/Itinerary/Itinerary';
 import VisitObject from './pages/VisitObject';
 import Home from './pages/Home';
 import './App.scss';
