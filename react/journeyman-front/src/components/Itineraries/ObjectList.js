@@ -37,7 +37,7 @@ class ObjectList extends React.Component {
 
         return (
             <List>
-                {objects.map(row =>
+                {objects.map((row, index) =>
                     <React.Fragment>
                         <ListItem alignItems="flex-start" className='itineraries-list'>
                             <ListItemAvatar>
@@ -60,7 +60,7 @@ class ObjectList extends React.Component {
                                 }
                             />
                         </ListItem>
-                        <Divider />
+                        {index !== objects.length - 1 && <Divider />}
                     </React.Fragment>
                 )}
             </List>
