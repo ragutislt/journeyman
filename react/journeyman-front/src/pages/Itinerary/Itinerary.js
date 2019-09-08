@@ -16,6 +16,8 @@ import ObjectList from '../../components/Itineraries/ObjectList'
 import { Paper } from '@material-ui/core';
 import ItineraryTitle from './ItineraryTitle';
 import ItineraryStats from './ItineraryStats';
+import TransportType from './TransportType';
+import Icon from '@material-ui/core/Icon';
 
 class Itinerary extends React.Component {
 
@@ -57,6 +59,7 @@ class Itinerary extends React.Component {
 		return (
 			<Layout pageName="Itinerary">
 				<ItineraryTitle/>
+				<TransportType/>
 				<div>
 					<Grid container spacing={40} style={{ minHeight: "90vh" }}>
 						<Grid item={true} xs>
@@ -66,37 +69,6 @@ class Itinerary extends React.Component {
 						</Grid>
 						<Grid item={true} xs>
 							<ItineraryStats/>
-							{/* {activeObject && activeObject.id ?
-								(
-									<Card>
-										<CardActionArea>
-											<CardMedia style={{ height: 150 }}
-												image={activeObject.image}
-												title={activeObject.title}
-											/>
-											<CardContent>
-												<Typography gutterBottom variant="h5" component="h2" align={"left"}>
-													{activeObject.title}
-												</Typography>
-												<Typography component="p" align={"left"}>
-													{activeObject.description}
-												</Typography>
-											</CardContent>
-										</CardActionArea>
-										<CardActions>
-											<Button size="small" color="primary" onClick={this.removeObject}>
-												Remove
-											</Button>
-											<Link href={activeObject.url} target="_blank">
-												<Button size="small" color="primary">
-													Learn More
-												</Button>
-											</Link>
-										</CardActions>
-									</Card>
-								) : <Typography component="p">
-									Select an object from the table to see it's description
-								</Typography>} */}
 						</Grid>
 					</Grid>
 					<Grid spacing={40} container>
