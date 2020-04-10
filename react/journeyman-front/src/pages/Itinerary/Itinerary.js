@@ -12,7 +12,7 @@ import Link from '@material-ui/core/Link';
 import MapContainer from "../MapContainer";
 import { fetch } from "../../data/DataProvider";
 import Layout from "../../layout/Layout";
-import ObjectList from '../../components/Itineraries/ObjectList'
+import ObjectList from '../../components/Objects/ObjectList'
 import { Paper } from '@material-ui/core';
 import ItineraryTitle from './ItineraryTitle';
 import ItineraryStats from './ItineraryStats';

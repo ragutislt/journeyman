@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Itineraries.scss';
+import '../Itineraries/Itineraries.scss';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
+import TravelBetweenObjects from './TravelBetweenObjects';
 
 
 class ObjectList extends React.Component {
@@ -60,7 +61,15 @@ class ObjectList extends React.Component {
                                 }
                             />
                         </ListItem>
-                        {index !== objects.length - 1 && <Divider />}
+                        {index !== objects.length - 1 ?
+                            <React.Fragment>
+                                {/* <Divider /> */}
+                                <Divider variant="inset"/>
+                                <TravelBetweenObjects/>
+                                <Divider variant="middle"/>
+                            </React.Fragment>
+                            : null
+                        }
                     </React.Fragment>
                 )}
             </List>
