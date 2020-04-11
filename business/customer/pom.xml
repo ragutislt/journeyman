@@ -6,22 +6,16 @@
 
     <parent>
         <groupId>eu.dainius</groupId>
-        <artifactId>journeyman</artifactId>
+        <artifactId>journeyman-business</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>journeyman-business</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>journeyman-business-customer</artifactId>
+    <packaging>jar</packaging>
 
-    <!-- <build>
+    <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-    </build> -->
-
-    <modules>
-        <module>travel</module>
-        <module>customer</module>
-    </modules>
-    
+    </build>
 
 </project>
