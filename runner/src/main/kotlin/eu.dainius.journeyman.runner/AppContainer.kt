@@ -1,12 +1,17 @@
 
 package eu.dainius.journeyman.runner
 
-import eu.dainius.journeyman.web.*
+import eu.dainius.journeyman.web.WebRunner
 
-class AppContainer {
+public class AppContainer {
+	var runner =  WebRunner()
+	
     fun run() {
-        val runner = WebRunner()
         runner.run()
+    }
+
+    fun url() {
+        return runner.url()
     }
 }
 

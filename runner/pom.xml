@@ -9,7 +9,6 @@
     </parent>
 
     <artifactId>journeyman-runner</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -18,7 +17,7 @@
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-        <main.class>MainKt</main.class>
+        <main.class>eu\dainius\journeyman\runner\MainKt</main.class>
     </properties>
 
     <repositories>
@@ -45,12 +44,14 @@
         </dependency>
         <dependency>
             <groupId>eu.dainius</groupId>
-            <artifactId>journeyman.web</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <artifactId>journeyman-web</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
     <build>
+    	<sourceDirectory>${sourceDirectory}</sourceDirectory>
+        <testSourceDirectory>${testSourceDirectory}</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

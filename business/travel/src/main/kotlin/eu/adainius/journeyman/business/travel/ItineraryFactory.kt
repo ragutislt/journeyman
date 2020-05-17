@@ -12,6 +12,13 @@ object ItineraryFactory {
     }
 
     fun itineraryPlus(itinerary: Itinerary, vararg objects: VisitObject): Itinerary {
+        // TODO check count
         return itineraryFrom(*itinerary.visitObjects.toTypedArray(), *objects)
+    }
+
+    fun itineraryMinus(itinerary: Itinerary, visitObject: VisitObject): Itinerary {
+        // TODO check count and other corner cases
+        val listWithoutObject: List<VisitObject> = itinerary.visitObjects.filter { obj -> obj != visitObject }
+        return itineraryFrom(*listWithoutObject.toTypedArray())
     }
 }

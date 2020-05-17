@@ -5,27 +5,36 @@ import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 import io.cucumber.java.Before
 import eu.dainius.journeyman.runner.AppContainer
+import io.ktor.client.*
+import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.http.HttpMethod
+import kotlinx.coroutines.runBlocking
+import io.ktor.client.engine.apache.Apache
 
 class ViewItinerarySteps {
-    
-    val app: AppContainer
 
-    init {
-        app = AppContainer();
-    }
+	val app: AppContainer
 
-    @Before
-    fun startApp() {
-        app.run()
-    }
+	init {
+		app = AppContainer();
+	}
 
-    @Given("an itinerary")
-    fun an_itinerary() {
-        // Write code here that turns the phrase above into concrete actions
-        throw io.cucumber.java.PendingException()
-    }
+	@Before
+	fun startApp() {
+		app.run()
+	}
 
-    @When("I view it")
+	@Given("an itinerary")
+	fun an_itinerary() {
+		runBlocking {
+			val client = HttpClient(Apache)
+			client.get<Unit>("https://en.wikipedia.org/wiki/Main_Page")
+		}
+	}
+
+/*     @When("I view it")
     fun i_view_it() {
         // Write code here that turns the phrase above into concrete actions
         throw io.cucumber.java.PendingException()
@@ -59,5 +68,5 @@ class ViewItinerarySteps {
     fun i_see_name_x() {
         // Write code here that turns the phrase above into concrete actions
         throw io.cucumber.java.PendingException()
-    }
+    } */
 }

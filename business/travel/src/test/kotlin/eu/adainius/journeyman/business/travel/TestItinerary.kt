@@ -1,7 +1,7 @@
 package eu.dainius.journeyman.business.travel
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test 
+import org.junit.jupiter.api.Test
 
 class TestItinerary {
     @Test
@@ -60,21 +60,31 @@ class TestItinerary {
 
     @Test
     fun `adding an object to the itinerary creates a new itinerary`() {
+        // GIVEN
         val itinerary = ItineraryFactory.itineraryFrom(
             VisitObject(),
             VisitObject()
         )
 
+        // WHEN
         val newItinerary = ItineraryFactory.itineraryPlus(itinerary, VisitObject())
 
+        // THEN
         assertNotEquals(itinerary, newItinerary)
+        assertTrue(newItinerary.visitObjects.size == itinerary.visitObjects.size + 1)
     }
 
-  /*   @Test
-    fun 'an itinerary can have 2 same objects to visit'() {
+    @Test
+    fun `an itinerary can have 2 same objects to visit`() {
+        // GIVEN
+        val object1 = VisitObject()
+        val object2 = VisitObject()
 
+        // WHEN
+        // THEN
+        assertDoesNotThrow { ItineraryFactory.itineraryFrom(object1, object2, object1) }
     }
- */
+
     @Test
     fun `an itinerary cannot have 2 same objects back to back`() {
         // GIVEN
@@ -85,18 +95,38 @@ class TestItinerary {
         // THEN
         assertThrows(InvalidItineraryException::class.java) { ItineraryFactory.itineraryFrom(object1, object1, object2) }
     }
-    /*
 
     @Test
-    fun 'objects are kept in order'() {
-
-    }
-
-    @Test
-    fun 'objects can be removed from the itinerary'() {
+    fun `removing an object from the itinerary will yield a new itinerary`() {
+        // GIVEN
+        val object1 = VisitObject()
+        val object2 = VisitObject()
+        val itinerary = ItineraryFactory.itineraryFrom(object1, object2)
         
+        // WHEN
+        val newItinerary = ItineraryFactory.itineraryMinus(itinerary, object2)
+
+        // THEN 
+        assertNotEquals(itinerary, newItinerary)
+        assertTrue(newItinerary.visitObjects.size == itinerary.visitObjects.size - 1)
     }
 
+    /* @Test
+    fun `we get a new itinerary when an object is removed at a specified position`() {
+        // GIVEN
+        val object1 = VisitObject()
+        val object2 = VisitObject()
+        val itinerary = ItineraryFactory.itineraryFrom(object1, object2)
+        
+        // WHEN
+        val newItinerary = ItineraryFactory.itineraryMinus(object2)
+
+        // THEN 
+        assertNotEquals(itinerary, newItinerary)
+        assertTrue(newItinerary.visitObjects.size == itinerary.visitObjects.size - 1)
+    }
+ */
+    /*
     @Test
     fun 'itinerary has total distance'() {
         

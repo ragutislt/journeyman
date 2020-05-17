@@ -7,16 +7,23 @@ import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
-class WebRunner {
+public class WebRunner {
     fun run() {
         val server = embeddedServer(Netty, 8080) {
             routing {
                 get("/") {
                     call.respondText("Hello, world!", ContentType.Text.Html)
                 }
+                post("/itinerary/create") {
+
+                }
             }
         }
         server.start()
+    }
+
+    fun url() {
+        return 
     }
 }
 
