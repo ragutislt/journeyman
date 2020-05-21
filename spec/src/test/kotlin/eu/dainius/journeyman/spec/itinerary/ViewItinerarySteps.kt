@@ -12,6 +12,7 @@ import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.http.HttpMethod
 import kotlinx.coroutines.runBlocking
 import io.ktor.client.engine.apache.Apache
+import io.cucumber.datatable.DataTable
 
 class ViewItinerarySteps {
 
@@ -21,11 +22,18 @@ class ViewItinerarySteps {
 		app = AppContainer();
 	}
 
+	lateinit var initialVisitObjects: List<List<String>> 
+	
 	@Before
 	fun startApp() {
 		app.run()
 	}
 
+	@Given("following objects:")
+	fun visit_objects(table: DataTable) {
+		initialVisitObjects = table.asLists();
+	}
+	
 	@Given("an itinerary")
 	fun an_itinerary() {
 		runBlocking {
@@ -34,7 +42,7 @@ class ViewItinerarySteps {
 		}
 	}
 
-/*     @When("I view it")
+     @When("I view it")
     fun i_view_it() {
         // Write code here that turns the phrase above into concrete actions
         throw io.cucumber.java.PendingException()
@@ -46,6 +54,7 @@ class ViewItinerarySteps {
         throw io.cucumber.java.PendingException()
     }
 
+ /*
     @Then("I get a list of objects in the itinerary")
     fun i_get_a_list_of_objects_in_the_itinerary() {
         // Write code here that turns the phrase above into concrete actions

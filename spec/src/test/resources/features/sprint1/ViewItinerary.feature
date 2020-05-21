@@ -2,6 +2,11 @@ Feature: View Itinerary
     We should be able to view a detailed Itinerary
 
     Background: Itinerary exists
+    		Given following objects:
+	    		| name    | description              				| location        |
+		  		| Madrid  | capital of spain  							| 40.416, -3.703  |
+		  		| Malaga  | capital of the sunny coast 			| 36.721, -4.425  |
+		  		| Sevilla | very nice   										| 37.389, -5.984  |
         Given an itinerary
         When I view it
 

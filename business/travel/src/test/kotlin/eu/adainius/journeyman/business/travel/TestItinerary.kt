@@ -2,14 +2,15 @@ package eu.dainius.journeyman.business.travel
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import eu.adainius.journeyman.business.travel.Location
 
 class TestItinerary {
     @Test
     fun `itinerary has objects`() {
         // GIVEN
         val itinerary = ItineraryFactory.itineraryFrom(
-            VisitObject(),
-            VisitObject()
+            getTestObject(),
+            getTestObject()
         )
 
         // WHEN
@@ -22,8 +23,8 @@ class TestItinerary {
     @Test
     fun `2 itineraries are equal if they have the same visit objects in the same order`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
         val itinerary1 = ItineraryFactory.itineraryFrom(object1, object2)
         val itinerary2 = ItineraryFactory.itineraryFrom(object1, object2)
 
@@ -35,8 +36,8 @@ class TestItinerary {
     @Test
     fun `2 itineraries are unequal if they have a different number of visitObjects`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
         val itinerary1 = ItineraryFactory.itineraryFrom(object1)
         val itinerary2 = ItineraryFactory.itineraryFrom(object1, object2)
 
@@ -48,8 +49,8 @@ class TestItinerary {
     @Test
     fun `2 itineraries are unequal if they the same visitObjects but in different order`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
         val itinerary1 = ItineraryFactory.itineraryFrom(object2, object1)
         val itinerary2 = ItineraryFactory.itineraryFrom(object1, object2)
 
@@ -62,12 +63,12 @@ class TestItinerary {
     fun `adding an object to the itinerary creates a new itinerary`() {
         // GIVEN
         val itinerary = ItineraryFactory.itineraryFrom(
-            VisitObject(),
-            VisitObject()
+            getTestObject(),
+            getTestObject()
         )
 
         // WHEN
-        val newItinerary = ItineraryFactory.itineraryPlus(itinerary, VisitObject())
+        val newItinerary = ItineraryFactory.itineraryPlus(itinerary, getTestObject())
 
         // THEN
         assertNotEquals(itinerary, newItinerary)
@@ -77,8 +78,8 @@ class TestItinerary {
     @Test
     fun `an itinerary can have 2 same objects to visit`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
 
         // WHEN
         // THEN
@@ -88,8 +89,8 @@ class TestItinerary {
     @Test
     fun `an itinerary cannot have 2 same objects back to back`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
 
         // WHEN
         // THEN
@@ -99,8 +100,8 @@ class TestItinerary {
     @Test
     fun `removing an object from the itinerary will yield a new itinerary`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
         val itinerary = ItineraryFactory.itineraryFrom(object1, object2)
         
         // WHEN
@@ -114,8 +115,8 @@ class TestItinerary {
     /* @Test
     fun `we get a new itinerary when an object is removed at a specified position`() {
         // GIVEN
-        val object1 = VisitObject()
-        val object2 = VisitObject()
+        val object1 = getTestObject()
+        val object2 = getTestObject()
         val itinerary = ItineraryFactory.itineraryFrom(object1, object2)
         
         // WHEN
@@ -136,4 +137,11 @@ class TestItinerary {
     fun 'itinerary has total time estimate'() {
         
     } */
+	
+	fun getTestObject(): VisitObject {
+		return VisitObject(
+			_name = "aa",
+			_description = "bb",
+			_location = Location(_lat = 45.22, _long = 75.2222))
+	}
 }

@@ -6,24 +6,33 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.request.*
+import io.ktor.features.ContentNegotiation
+import io.ktor.gson.*
+import java.text.DateFormat
+import eu.dainius.journeyman.web.request.CreateItineraryRequest
 
 public class WebRunner {
-    fun run() {
-        val server = embeddedServer(Netty, 8080) {
-            routing {
-                get("/") {
-                    call.respondText("Hello, world!", ContentType.Text.Html)
-                }
-                post("/itinerary/create") {
+	val itineraryController: ItineraryController = ItineraryController()
+	
+	fun run() {
+		val server = embeddedServer(Netty, 8080) {
+			install(ContentNegotiation) {
+				gson {
+					setPrettyPrinting()
+				}
+			}
+			routing {
+				post("/itinerary/create") {
+					val createdItinerary = call.receive<CreateItineraryRequest>()
+				}
+			}
+		}
+		server.start()
+	}
 
-                }
-            }
-        }
-        server.start()
-    }
-
-    fun url() {
-        return 
-    }
+	fun url() {
+		return
+	}
 }
 
